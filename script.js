@@ -12,8 +12,9 @@ function loadHTML() {
     Object.keys(library).map(key => createHTML(library[key]));
 }
 window.addEventListener('load', loadHTML);
-form.addEventListener('submit', createItem)
-
+form.addEventListener('submit', createItem);
+// creation de contenu
+// C
 function createItem(e) {
     e.preventDefault();
     const timestamp = Date.now();
@@ -27,7 +28,8 @@ function createItem(e) {
     saveObj();
     this.reset();
 }
-
+// fonction créeant du visuel HTML
+// R
 function createHTML(obj, key) {
     if (!obj.title) return;
     const html = `
@@ -45,14 +47,28 @@ function createHTML(obj, key) {
     li.children.trash.onclick = toBin;
     li.children.check.onclick = check;
 }
-
+// creation du formulaire de modification
+function createEditForm(e) {
+    e.preventDefault();
+    const timestamp = Date.now();
+    library[timestamp] = {
+        title: formInputTitle.value,
+        author: formInputAuthor.value,
+        type: formInputType.value,
+        checked: false
+    }
+    createHTML(library[timestamp], timestamp);
+    saveObj();
+    this.reset();
+}
+// fonction de corbeille
 function toBin() {
     this.parentNode.remove();
     const key = this.parentNode.getAttribute('data-key');
     delete library[key];
     saveObj();
 }
-
+// fonction de validation de lecture d'un livre
 function check() {
     this.parentNode.classList.toggle('flip');
     this.innerHTML = this.innerHTML === '✔️' ? "🔄" : "✔️";
@@ -64,8 +80,4 @@ function check() {
 
 function saveObj() {
     window.localStorage.setItem('data', JSON.stringify(library));
-}
-
-function updBook() {
-    
 }
