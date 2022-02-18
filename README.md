@@ -4,7 +4,7 @@ Le design a été fait avec :
 * HTML
 * CSS
 
-Le rendu dynamique et le principe CRUD ont été fait avec :
+Le rendu dynamique et la méthode CRUD ont été fait avec :
 * Javascript
 ### Le projet fonctionne sur le principe du C(reate) R(ead) U(pdate) D(elete).
 ### Le CRUD permet donc de créer du contenu, le lire, le modifier et le supprimer, le but étant ici de ranger un livre dans une bibliothèque, de l'enlever, le remplacer, d'en rajouter un.
